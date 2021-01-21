@@ -10,9 +10,10 @@ body{
 	flex-direction: column;
 	align-items: center;
   justify-content: center;
-      height: 80vh;
-          margin: 10vh 10%;
+    height: 75vh;
+    margin: 10vh 10% 15vh;
           position: relative;
+          overflow: scroll;
 }
 
 
@@ -27,8 +28,8 @@ body{
     align-items: center;
   justify-content: center;
   text-decoration: none;
-      bottom: 0;
-    position: absolute;
+    bottom: 30px;
+    position: fixed;
 }
 
 #add:hover{

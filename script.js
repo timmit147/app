@@ -1,45 +1,36 @@
 var titel;
 var save = document.getElementById("save");
+var data;
+
 
 if(save){
 	save.addEventListener("click", myFunction);
 }
 
 function myFunction() {
-name = document.getElementById("titel").value;
-window.localStorage.setItem('name', name);
-titel = window.localStorage.getItem('name');
-window.location.href = "index.html";
+	var data = window.localStorage.getItem('data');
+	var data = data + " " + document.getElementById("titel").value;
+	window.localStorage.setItem('data', data);
+	window.location.href = "index.html";
 }
+
 
 
 if(document.getElementById("home")){
 	window.onload = function() {
 		if(window.localStorage){
-			document.getElementById('log').innerHTML = "<p>" + window.localStorage.getItem('name') + "</p>" + "<div class='bar'><div class='progress'></div></div>";
+			var i = 0;
+			while (i < 100) {
+			  const words =  window.localStorage.getItem('data').split(' ');
+			  document.getElementById('log').innerHTML += "<p>" + (words[i]) + "</p>" + "<div class='bar'><div class='progress'></div></div>";
+			  	i++;
+
+			  	if ((words[i]) == undefined){
+			  		i = 9999;
+			  	}
+			}
+			
 		}
 	}
 }
 
-if(log = document.getElementById('log')){
-	if(log.innerHTML != null){
-		document.getElementById('add-info').style.display = "none";
-		// document.getElementById('add').style.display = "none";
-	}
-	else{
-		document.getElementById('add-info').style.display = "block";
-	}
-}
-
-// app.js
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js').then(function(registration) {
-      // Registration was successful
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
-      // registration failed :(
-      console.log('ServiceWorker registration failed: ', err);
-    });
-  });
-}
