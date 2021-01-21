@@ -122,12 +122,12 @@ label {
 }
 
 .progress {
-    background-color: #6A6A6A;
+    background-color: #5375e5;
     height: 100%;
     width: 10%;
 }
 
-button{
+#save{
 	position: absolute;
 	bottom: 0;
 	background-color: #5375E5;
@@ -137,10 +137,7 @@ button{
     border: 1px solid #5375E5;
 }
 
-
-
-
-button:hover{
+#save:hover{
 	background-color: transparent;
 	color: #5375E5;
 }
