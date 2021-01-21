@@ -10,7 +10,7 @@ var testObject = { 'one': 1, 'two': 2, 'three': 3 };
 console.log(testObject['two']);
 
 function clearfuntion() {
-window.localStorage.clear();
+localStorage.clear();
 }
 
 
