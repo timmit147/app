@@ -30,7 +30,7 @@ if(save){
 }
 
 function myFunction() {
-	data = data + "," + document.getElementById("titel").value + "^" + document.getElementById("goal").value  + "^" + document.getElementById("amount").value;
+	data = data + "," + document.getElementById("titel").value + "^" + document.getElementById("goal").value  + "^" + 0;
 	window.localStorage.setItem('data', data);
 	window.location.href = "index.html";
 }
