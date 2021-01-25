@@ -63,9 +63,9 @@ if(document.getElementById("home")){
 		window.location.href = "index.html";
 	}
 
-	function removefuntion(){
+	function removefuntion(number){
 
-	objects = objects.slice(1);
+	objects = objects.slice(number);
 	localStorage.setItem("savedData", JSON.stringify(objects));
 	window.location.href = "index.html";
 	}
