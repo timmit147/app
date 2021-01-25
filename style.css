@@ -38,10 +38,8 @@ body{
 }
 
 #add:before {
-	    font-family: "Font Awesome 5 Free";
-        content: "\f067";
-            font-weight: 900;
-                font-size: 20px;
+    content: url(images/Plus_font_awesome.svg);
+    width: 30px;
 }
 
 #log {

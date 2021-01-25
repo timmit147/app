@@ -1,80 +1,68 @@
-var save = document.getElementById("save");
-var clear = document.getElementById("clear");
-var data = window.localStorage.getItem('data');
-var i = 1;
 
-// check if got data
-if(data){
-var goal =  data.split(',');
+// get
+var objects = JSON.parse(localStorage.getItem("savedData"));
+// console.log(objects[0].id);
+console.log(objects);
+
+// add
+localStorage.setItem("savedData", JSON.stringify(objects));
+
+// set new
+if (document.getElementById("save")){
+document.getElementById("save").addEventListener("click", addfuntion);
+}
+
+// find id
+function addfuntion(){
+var i = "0";
+	while (i < 999) {
+		console.log(objects[i]);
+		if(objects[i] == undefined){
+			objects[i] =  {'name':document.getElementById("titel").value , 'goal' : document.getElementById("goal").value , 'value' : '1' } ;
+			localStorage.setItem("savedData", JSON.stringify(objects));
+			window.location.href = "index.html";
+			break; 
+		}
+		i++;
+	}
 }
 
 
-// add value
-function addfuntion(number) {
-var y = goal[number].split('^')[2];
-  var z = 1;
-  var x = +y + +z;
-goal = goal.toString().replace(y, x ); 
-window.localStorage.setItem('data', goal);
-window.location.href = "index.html";
-}
-
-// remove value
-function subfuntion(number) {
-var y = goal[number].split('^')[2];
-  var z = 1;
-  var x = +y - +z;
-goal = goal.toString().replace(y, x );
-window.localStorage.setItem('data', goal);
-window.location.href = "index.html";
-}
-
-
-
-// remove goal
-function removefuntion(number) {
-goal = goal.toString().replace(","+goal[number], ''); 
-window.localStorage.setItem('data', goal);
-window.location.href = "index.html";
-}
-
-
-
-// clear all data
-if(clear){
-	clear.addEventListener("click", clearfuntion);
-}
-
-function clearfuntion() {
-localStorage.clear();
-}
-
-
-// set goal listerner
-if(save){
-	save.addEventListener("click", myFunction);
-}
-
-function myFunction() {
-	data = data + "," + document.getElementById("titel").value + "^" + document.getElementById("goal").value  + "^" + 0;
-	window.localStorage.setItem('data', data);
-	window.location.href = "index.html";
-}
 
 
 // load data
 if(document.getElementById("home")){
-	window.onload = function() {
-		if(goal[1]){
-			while (i < 100) {
-			  document.getElementById('log').innerHTML += "<button onclick='removefuntion("+i+")'>Remove</button> <button onclick='subfuntion("+i+")'>sub</button> <button onclick='addfuntion("+i+")'>Add</button> <p>" + goal[i].split('^')[0] + "</p> <p>" + goal[i].split('^')[1] + "</p><p>" + goal[i].split('^')[2] + "</p>" + "<div class='bar'><div style='width: calc(100% / "+goal[i].split('^')[1]+" * "+goal[i].split('^')[2]+");' class='progress'></div></div>";
-			  	i++;
 
-			  	if (goal[i] == undefined){
-			  		i = 9999;
+	window.onload = function() {
+		var i = "0";
+			while (i < 100) {
+				if (objects[i] == undefined){
+			  		break; 
 			  	}
+			  document.getElementById('log').innerHTML += "<button onclick='removefuntion("+i+")'>Remove</button> <button onclick='subfuntion("+i+")'>sub</button> <button onclick='addfuntion("+i+")'>Add</button> <p>" + objects[i].name + "</p> <p>" + objects[i].goal + "</p><p>" + objects[i].value + "</p>" + "<div class='bar'><div style='width: calc(100% / "+objects[i].goal+" * "+objects[i].value+");' class='progress'></div></div>";
+			  	i++;
 			}
 			
-		}
 	}
+
+
+	function addfuntion(number){
+		objects[number].value = objects[number].value  + 1;
+		localStorage.setItem("savedData", JSON.stringify(objects));
+		window.location.href = "index.html";
+	}
+
+	function subfuntion(number){
+		objects[number].value = objects[number].value - 1;
+		localStorage.setItem("savedData", JSON.stringify(objects));
+		window.location.href = "index.html";
+	}
+
+	function removefuntion(){
+
+	objects = objects.slice(1);
+	localStorage.setItem("savedData", JSON.stringify(objects));
+	window.location.href = "index.html";
+	}
+
 }
