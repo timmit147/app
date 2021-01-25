@@ -1,5 +1,5 @@
 // create localStorage
-if(localStorage.getItem("savedData")== []){
+if(localStorage.getItem("savedData")== null){
 	var myArray =  [];
 	localStorage.setItem("savedData", JSON.stringify(myArray));
 }
