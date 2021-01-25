@@ -18,12 +18,15 @@ document.getElementById("save").addEventListener("click", addfuntion);
 }
 
 // find id
+
+	
 function addfuntion(){
+
+if((document.getElementById("titel").value != "") && (document.getElementById("goal").value != "" )) {	
 var i = "0";
 	while (i < 999) {
-		console.log(objects[i]);
 		if(objects[i] == undefined){
-			objects[i] =  {'name':document.getElementById("titel").value , 'goal' : document.getElementById("goal").value , 'value' : '1' } ;
+			objects[i] =  {'name':document.getElementById("titel").value , 'goal' : document.getElementById("goal").value , 'points' : '1' } ;
 			localStorage.setItem("savedData", JSON.stringify(objects));
 			window.location.href = "index.html";
 			break; 
@@ -32,6 +35,7 @@ var i = "0";
 	}
 }
 
+}
 
 
 
@@ -44,7 +48,7 @@ if(document.getElementById("home")){
 				if (objects[i] == undefined){
 			  		break; 
 			  	}
-			  document.getElementById('log').innerHTML += "<button onclick='removefuntion("+i+")'>Remove</button> <button onclick='subfuntion("+i+")'>sub</button> <button onclick='addfuntion("+i+")'>Add</button> <p>" + objects[i].name + "</p> <p>" + objects[i].goal + "</p><p>" + objects[i].value + "</p>" + "<div class='bar'><div style='width: calc(100% / "+objects[i].goal+" * "+objects[i].value+");' class='progress'></div></div>";
+			  document.getElementById('log').innerHTML += "<button onclick='removefuntion("+i+")'>Remove</button> <button onclick='subfuntion("+i+")'>sub</button> <button onclick='addfuntion("+i+")'>Add</button> <p>" + objects[i].name + "</p> <p>" + objects[i].goal + "</p><p>" + objects[i].points + "</p>" + "<div class='bar'><div style='width: calc(100% / "+objects[i].goal+" * "+objects[i].points+");' class='progress'></div></div>";
 			  	i++;
 			}
 			
@@ -52,20 +56,20 @@ if(document.getElementById("home")){
 
 
 	function addfuntion(number){
-		objects[number].value = objects[number].value  + 1;
+		var x = 1;
+		objects[number].points = objects[number].points - 1 + 2;
 		localStorage.setItem("savedData", JSON.stringify(objects));
 		window.location.href = "index.html";
 	}
 
 	function subfuntion(number){
-		objects[number].value = objects[number].value - 1;
+		objects[number].points = objects[number].points - 1;
 		localStorage.setItem("savedData", JSON.stringify(objects));
 		window.location.href = "index.html";
 	}
 
-	function removefuntion(number){
-
-	objects = objects.slice(number);
+	function removefuntion(number){	
+	objects = objects.splice(+number + +1);
 	localStorage.setItem("savedData", JSON.stringify(objects));
 	window.location.href = "index.html";
 	}

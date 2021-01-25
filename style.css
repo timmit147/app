@@ -56,6 +56,7 @@ body{
     left: 20px;
     top: 20px;
     position: absolute;
+    width: 40px;
 }
 
 #back:hover {
@@ -63,10 +64,7 @@ body{
 }
 
 #back:before{
-	font-family: "Font Awesome 5 Free";
-        content: "\f053";
-            font-weight: 900;
-                font-size: 20px;
+	content: url(images/Angle_left_font_awesome.svg);
 }
 
 #preview-goal{
