@@ -1,7 +1,12 @@
+// create localStorage
+if(localStorage.getItem("savedData")== []){
+	var myArray =  [];
+	localStorage.setItem("savedData", JSON.stringify(myArray));
+}
+
 
 // get
 var objects = JSON.parse(localStorage.getItem("savedData"));
-// console.log(objects[0].id);
 console.log(objects);
 
 // add
@@ -66,3 +71,12 @@ if(document.getElementById("home")){
 	}
 
 }
+
+// clear data
+if (document.getElementById("clear")){
+document.getElementById("clear").addEventListener("click", clearfuntion);
+}
+
+function clearfuntion(){
+localStorage.clear();
+	}
