@@ -48,7 +48,7 @@ if(document.getElementById("home")){
 				if (objects[i] == undefined){
 			  		break; 
 			  	}
-			  document.getElementById('log').innerHTML += "<button onclick='removefuntion("+i+")'>Remove</button> <button onclick='subfuntion("+i+")'>sub</button> <button onclick='addfuntion("+i+")'>Add</button> <p>" + objects[i].name + "</p> <p>" + objects[i].goal + "</p><p>" + objects[i].points + "</p>" + "<div class='bar'><div style='width: calc(100% / "+objects[i].goal+" * "+objects[i].points+");' class='progress'></div></div>";
+			  document.getElementById('log').innerHTML += "<a href='index.html'> <p>" + objects[i].name + "</p> " + "<div class='bar'><div style='width: calc(100% / "+objects[i].goal+" * "+objects[i].points+");' class='progress'></div></div></a> ";
 			  	i++;
 			}
 			
@@ -84,3 +84,7 @@ document.getElementById("clear").addEventListener("click", clearfuntion);
 function clearfuntion(){
 localStorage.clear();
 	}
+
+
+// <p>" + objects[i].goal + "</p><p>" + objects[i].points + "</p>
+// <button onclick='removefuntion("+i+")'>Remove</button> <button onclick='subfuntion("+i+")'>sub</button> <button onclick='addfuntion("+i+")'>Add</button> 

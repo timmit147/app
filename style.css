@@ -2,110 +2,113 @@ body{
 	margin: 0px;
 	font-family: roboto;
 	    font-size: 18px;
+        background-color: #343434;
+        color: white;
+            margin: 10%;
 } 
+
+/*hide scrollbar*/
+::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
 
 /*home page*/
 #show-goal{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-  justify-content: center;
-    height: 75vh;
-    margin: 10vh 10% 15vh;
+    height: 80vh;
           position: relative;
           overflow: scroll;
 }
 
 
-#add {
-    background-color: #5375E5;
+#add,#back {
+    background-color: #3DA0EB;
     color: white;
-    border-radius: 30%;
+    border-radius: 50%;
     height: 3em;
     width: 3em;
-    border: 1px solid #5375E5;
+    border: 1px solid #3DA0EB;
     display: flex;
     align-items: center;
   justify-content: center;
   text-decoration: none;
-    bottom: 30px;
-    position: fixed;
+    bottom: 5%;
+     position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
-#add:hover{
+/*#add:hover{
 	background-color: transparent;
-	color: #5375E5;
-}
+	color: #3DA0EB;
+}*/
 
 #add:before {
     content: url(images/Plus_font_awesome.svg);
     width: 30px;
+    padding-top: 3px;
 }
 
+
+#back:before {
+    content: url(images/Angle_left_font_awesome.svg);
+        width: 40px;
+    padding-top: 3px;
+}
 #log {
     width: 100%;
-        text-align: center;
-            position: absolute;
-    top: 0;
+    text-align: center;
 }
 
-/*add page*/
-#back {
-    text-decoration: none;
-    color: #5375E5;
-    left: 20px;
-    top: 20px;
-    position: absolute;
-    width: 40px;
-}
-
-#back:hover {
-	color: black;
-}
-
-#back:before{
-	content: url(images/Angle_left_font_awesome.svg);
-}
 
 #preview-goal{
 	    display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10vh 10%;
-    height: 80vh;
     box-sizing: border-box;
     position: relative;
 }
 
 #add-goal{
-	display: flex;
-	flex-direction: column;
-	align-self: baseline;
-	padding-top: 50px;
+	    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
 }
 
 #add-goal input {
-    margin-bottom: 20px;
-    border: 1px solid #5375E5;
+    margin-bottom: 40px;
+    border: 2px solid #3DA0EB;
     border-radius: 10px;
     padding: 10px;
     color: white;
+    background-color: transparent;
+}
+
+input#save {
+    width: fit-content;
+        padding: 10px 20px;
+    align-self: center;
 }
 
 label {
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 ::-webkit-input-placeholder { /* Edge */
-  color:  #5375E5;
+  color:  white;
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #5375E5;
+  color: white;
 }
 
 ::placeholder {
-  color: #5375E5;
+  color: white;
 }
 
 /*progress bar*/
@@ -118,23 +121,21 @@ label {
 }
 
 .progress {
-    background-color: #5375e5;
+    background-color: #3DA0EB;
     height: 100%;
     width: 10%;
 }
 
 #save{
-	position: absolute;
-	bottom: 0;
-	background-color: #5375E5;
+	background-color: #3DA0EB;
     color: white;
     border-radius: 10px;
     padding: 10px 15px;
-    border: 1px solid #5375E5;
+    border: 1px solid #3DA0EB;
 }
 
 #save:hover{
 	background-color: transparent;
-	color: #5375E5;
+	color: #3DA0EB;
 }
 
