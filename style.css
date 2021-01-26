@@ -139,3 +139,29 @@ label {
 	color: #3DA0EB;
 }
 
+
+/*single page*/
+
+#addsub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+
+#addsub p {
+    padding: 0px 20px;
+}
+
+#addpoint, #subpoint {
+    background-color: #3DA0EB;
+    color: white;
+    border-radius: 50%;
+    height: 3em;
+    width: 3em;
+    border: 1px solid #3DA0EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}

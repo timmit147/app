@@ -26,7 +26,7 @@ if((document.getElementById("titel").value != "") && (document.getElementById("g
 var i = "0";
 	while (i < 999) {
 		if(objects[i] == undefined){
-			objects[i] =  {'name':document.getElementById("titel").value , 'goal' : document.getElementById("goal").value , 'points' : '1' } ;
+			objects[i] =  {'name':document.getElementById("titel").value , 'goal' : document.getElementById("goal").value , 'points' : '0' } ;
 			localStorage.setItem("savedData", JSON.stringify(objects));
 			window.location.href = "index.html";
 			break; 
@@ -42,36 +42,14 @@ var i = "0";
 // load data
 if(document.getElementById("home")){
 
-	window.onload = function() {
 		var i = "0";
 			while (i < 100) {
 				if (objects[i] == undefined){
 			  		break; 
 			  	}
-			  document.getElementById('log').innerHTML += "<a href='index.html'> <p>" + objects[i].name + "</p> " + "<div class='bar'><div style='width: calc(100% / "+objects[i].goal+" * "+objects[i].points+");' class='progress'></div></div></a> ";
+			  document.getElementById('log').innerHTML += "<a onclick='singlefuntion("+i+");' > <p>" + objects[i].name + "</p> " + "<div class='bar'><div style='width: calc(100% / "+objects[i].goal+" * "+objects[i].points+");' class='progress'></div></div></a> ";
 			  	i++;
-			}
 			
-	}
-
-
-	function addfuntion(number){
-		var x = 1;
-		objects[number].points = objects[number].points - 1 + 2;
-		localStorage.setItem("savedData", JSON.stringify(objects));
-		window.location.href = "index.html";
-	}
-
-	function subfuntion(number){
-		objects[number].points = objects[number].points - 1;
-		localStorage.setItem("savedData", JSON.stringify(objects));
-		window.location.href = "index.html";
-	}
-
-	function removefuntion(number){	
-	objects = objects.splice(+number + +1);
-	localStorage.setItem("savedData", JSON.stringify(objects));
-	window.location.href = "index.html";
 	}
 
 }
@@ -86,5 +64,40 @@ localStorage.clear();
 	}
 
 
-// <p>" + objects[i].goal + "</p><p>" + objects[i].points + "</p>
-// <button onclick='removefuntion("+i+")'>Remove</button> <button onclick='subfuntion("+i+")'>sub</button> <button onclick='addfuntion("+i+")'>Add</button> 
+
+function singlefuntion(number){
+	localStorage.setItem("page", JSON.stringify(number));
+	window.location.href = "single.html";
+}
+
+
+
+
+// single page 
+if(document.getElementById("single")){
+
+	var i = localStorage.getItem("page");
+
+	document.getElementById('log').innerHTML += " <p>" + objects[i].name + "</p> " + "<div class='bar'><div style='width: calc(100% / "+objects[i].goal+" * "+objects[i].points+");' class='progress'></div></div> <div id='addsub'> <button id='subpoint' onclick='subfuntion("+i+")'>sub</button> <p>" + objects[i].points +" / " + objects[i].goal + "</p> <button id='addpoint' onclick='addfuntion("+i+")'>Add</button> </div> <button onclick='removefuntion("+i+")'>Remove</button> "
+
+
+	function addfuntion(number){
+		var x = 1;
+		objects[number].points = objects[number].points - 1 + 2;
+		localStorage.setItem("savedData", JSON.stringify(objects));
+		window.location.href = "single.html";
+	}
+
+	function subfuntion(number){
+		objects[number].points = objects[number].points - 1;
+		localStorage.setItem("savedData", JSON.stringify(objects));
+		window.location.href = "single.html";
+	}
+
+	function removefuntion(number){	
+	objects = objects.splice(number + 1 );
+	localStorage.setItem("savedData", JSON.stringify(objects));
+	window.location.href = "index.html";
+	}
+
+}	
